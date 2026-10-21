@@ -11,7 +11,7 @@ export function Beyond() {
   const { t } = useLang();
   const [d, setD] = useState(0);
   const [b, setB] = useState("vp");
-  const dom = domains[d];
+  const dom = domains[d]!;
   const block = bmc.find((x) => x.key === b)!;
   const area: Record<string, string> = {
     kp: "md:col-start-1 md:row-start-1 md:row-span-2",
@@ -186,12 +186,12 @@ export function Insights() {
 export function Contact() {
   const { t } = useLang();
   const [v, setV] = useState({ name: "", email: "", org: "", topic: "", message: "" });
-  const [err, setErr] = useState<Record<string, string>>({});
+  const [err, setErr] = useState<Partial<Record<"name" | "email" | "topic" | "message", string>>>({});
   const [done, setDone] = useState(false);
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
-    const er: Record<string, string> = {};
+    const er: Partial<Record<"name" | "email" | "topic" | "message", string>> = {};
     if (!v.name.trim()) er.name = t(ui.f.errName);
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) er.email = t(ui.f.errEmail);
     if (!v.topic) er.topic = t(ui.f.errTopic);
@@ -204,7 +204,7 @@ export function Contact() {
   };
 
   const field = "w-full rounded-lg border border-input bg-surface px-4 py-3 text-sm placeholder:text-muted-foreground";
-  const E = ({ k }: { k: string }) => (err[k] ? <p className="mt-1 text-xs text-destructive" role="alert">{err[k]}</p> : null);
+  const E = ({ k }: { k: "name" | "email" | "topic" | "message" }) => (err[k] ? <p className="mt-1 text-xs text-destructive" role="alert">{err[k]}</p> : null);
 
   return (
     <section id="contact" className="relative scroll-mt-20 overflow-hidden border-t border-border">

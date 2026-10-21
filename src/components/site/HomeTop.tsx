@@ -89,7 +89,7 @@ function ProjectCard({ slug, big }: { slug: string; big?: boolean }) {
       )}
       <p className="mt-5 text-sm">
         <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">{t(ui.myRole)} — </span>
-        {t(p.contribution[0])}
+        {t(p.contribution[0]!)}
       </p>
       <div className="mt-4 flex flex-wrap gap-1.5">
         {p.stack.slice(0, big ? 8 : 5).map((s) => (
