@@ -7,6 +7,8 @@ export const getRouter = () => {
 
   const router = createRouter({
     routeTree,
+    // Matches the Vite base: "/portfolio" on GitHub Pages, "/" in dev/preview.
+    basepath: import.meta.env.BASE_URL.replace(/\/$/, "") || "/",
     context: { queryClient },
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,

@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail, X } from "lucide-react";
 import { Reveal, SectionHead } from "./ui";
 import { aboutText, aboutTimeline, bmc, config, domains, insights, statusLabel, ui } from "@/content/site";
 import { useLang } from "@/content/i18n";
-import portrait from "@/assets/portrait.jpg.asset.json";
+const portraitUrl = `${import.meta.env.BASE_URL}portrait.jpg`;
 
 const statusColor = { Exploring: "text-muted-foreground", Learning: "text-primary", Practicing: "text-violet", Applied: "text-teal" } as const;
 
@@ -132,7 +132,7 @@ export function About() {
       <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
         <Reveal>
           <div className="relative overflow-hidden rounded-2xl border border-border">
-            <img src={portrait.url} alt="Portrait of Hajar El Khouchali" className="aspect-[4/5] w-full object-cover grayscale-[30%]" loading="lazy" />
+            <img src={portraitUrl} alt="Portrait of Hajar El Khouchali" className="aspect-[4/5] w-full object-cover grayscale-[30%]" loading="lazy" />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background to-transparent p-5">
               <p className="font-mono text-xs text-muted-foreground">ENSA KHOURIBGA · IID</p>
             </div>

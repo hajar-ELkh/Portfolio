@@ -40,14 +40,14 @@ export function Nav() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <motion.div className="absolute bottom-0 left-0 h-px w-full origin-left bg-signal" style={{ scaleX }} aria-hidden />
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:px-8">
-        <a href="/#home" className="font-display text-sm font-semibold tracking-[0.16em]">
+        <a href={`${import.meta.env.BASE_URL}#home`} className="font-display text-sm font-semibold tracking-[0.16em]">
           HAJAR <span className="text-muted-foreground">EL KHOUCHALI</span>
         </a>
         <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
           {nav.map((n) => (
             <a
               key={n.id}
-              href={`/#${n.id}`}
+              href={`${import.meta.env.BASE_URL}#${n.id}`}
               aria-current={active === n.id ? "true" : undefined}
               className={`rounded-full px-3 py-1.5 text-sm transition-colors ${active === n.id ? "bg-surface-2 text-foreground" : "text-muted-foreground hover:text-foreground"}`}
             >
@@ -57,7 +57,7 @@ export function Nav() {
         </nav>
         <div className="hidden items-center gap-3 lg:flex">
           {LangSwitch}
-          <a href="/#contact" className="rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90">
+          <a href={`${import.meta.env.BASE_URL}#contact`} className="rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90">
             {t(ui.connect)}
           </a>
         </div>
@@ -68,13 +68,13 @@ export function Nav() {
       {open && (
         <nav aria-label="Mobile" className="border-t border-border bg-background px-5 pb-6 pt-2 lg:hidden">
           {nav.map((n) => (
-            <a key={n.id} href={`/#${n.id}`} onClick={() => setOpen(false)} className="block border-b border-border py-3 text-base">
+            <a key={n.id} href={`${import.meta.env.BASE_URL}#${n.id}`} onClick={() => setOpen(false)} className="block border-b border-border py-3 text-base">
               {t(n.label)}
             </a>
           ))}
           <div className="mt-4 flex items-center justify-between">
             {LangSwitch}
-            <a href="/#contact" onClick={() => setOpen(false)} className="rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background">
+            <a href={`${import.meta.env.BASE_URL}#contact`} onClick={() => setOpen(false)} className="rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background">
               {t(ui.connect)}
             </a>
           </div>

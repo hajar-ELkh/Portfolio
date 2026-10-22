@@ -6,7 +6,7 @@ export const config = {
   linkedin: "https://linkedin.com/in/hajar-elkhouchali",
   github: "https://github.com/hajar-ELkh",
   // Set to null to show the "CV not configured" state.
-  cvUrl: "/cv-hajar-el-khouchali.pdf" as string | null,
+  cvUrl: `${import.meta.env.BASE_URL}cv-hajar-el-khouchali.pdf` as string | null,
 };
 
 export const nav = [
