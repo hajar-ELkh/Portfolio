@@ -12,21 +12,18 @@ const isBuild = process.env.NODE_ENV === "production";
 
 // Every route is prerendered to static HTML at build time: the site needs no server.
 // autoStaticPathsDiscovery is off so this list is the complete set of prerendered pages.
-// Paths include the production base: the router runs with basepath "/portfolio"
-// during the build, and unprefixed paths redirect-loop in the prerenderer.
-const base = isBuild ? "/portfolio" : "";
 const pages = [
-  { path: `${base}/` },
-  { path: `${base}/projects/intelcia-tech-monitoring-pipeline` },
-  { path: `${base}/projects/srm-strategic-meters` },
-  { path: `${base}/projects/darija-ner` },
-  { path: `${base}/projects/darija-ner-app` },
-  { path: `${base}/projects/arabic-ocr` },
-  { path: `${base}/projects/farmguard` },
-  { path: `${base}/projects/heart-disease-prediction` },
-  { path: `${base}/projects/shopmarket` },
-  { path: `${base}/projects/multichannel-dwh` },
-  { path: `${base}/projects/hadoop-movielens` },
+  { path: "/" },
+  { path: "/projects/intelcia-tech-monitoring-pipeline" },
+  { path: "/projects/srm-strategic-meters" },
+  { path: "/projects/darija-ner" },
+  { path: "/projects/darija-ner-app" },
+  { path: "/projects/arabic-ocr" },
+  { path: "/projects/farmguard" },
+  { path: "/projects/heart-disease-prediction" },
+  { path: "/projects/shopmarket" },
+  { path: "/projects/multichannel-dwh" },
+  { path: "/projects/hadoop-movielens" },
 ];
 
 export default defineConfig({
