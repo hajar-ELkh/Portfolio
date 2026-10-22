@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "profile" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: import.meta.env.BASE_URL }],
   }),
   component: Index,
 });
