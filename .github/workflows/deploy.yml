@@ -40,6 +40,16 @@ jobs:
       - name: Build portfolio
         run: npm run build
 
+      - name: Verify static pages and original public assets
+        run: |
+          test -f dist/client/index.html
+          test "$(find dist/client/projects -name index.html | wc -l)" -eq 10
+          for asset in cv-hajar-el-khouchali.pdf portrait.jpg favicon.svg favicon.ico; do
+            cmp "public/$asset" "dist/client/$asset"
+          done
+          grep -q '/Portfolio/cv-hajar-el-khouchali.pdf' dist/client/index.html
+          test ! -d dist/client/Portfolio/cv-hajar-el-khouchali.pdf
+
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v4
         with:
