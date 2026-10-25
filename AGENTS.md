@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - GitHub Pages CI installs dependencies with Bun using the root `bun.lock`, retains `npm run build`, and uploads only `dist/client`; this matches the project's lockfile and publishes static files without server output.
+- Prerender only explicitly listed HTML pages with `crawlLinks: false`; public downloads must be copied unchanged by Vite rather than fetched as HTML, and asset URLs must use `import.meta.env.BASE_URL` to follow the deployment base.
