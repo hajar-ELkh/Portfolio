@@ -6,8 +6,8 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-// GitHub Pages serves the site at https://<user>.github.io/portfolio/, so production
-// builds use base "/portfolio/". Dev/preview stays at "/" so the Lovable preview works.
+// GitHub Pages paths are case-sensitive: production uses "/Portfolio/".
+// Dev/preview stays at "/" so the Lovable preview works.
 const isBuild = process.env["NODE_ENV"] === "production";
 
 // Every route is prerendered to static HTML at build time: the site needs no server.
@@ -28,13 +28,14 @@ const pages = [
 
 export default defineConfig({
   vite: {
-    base: isBuild ? "/portfolio/" : "/",
+    base: isBuild ? "/Portfolio/" : "/",
   },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
     pages,
-    prerender: { enabled: true, autoStaticPathsDiscovery: false },
+    // Render only the listed portfolio pages, never crawl CV/download links as HTML.
+    prerender: { enabled: true, autoStaticPathsDiscovery: false, crawlLinks: false },
   },
 });
