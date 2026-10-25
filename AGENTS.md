@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- GitHub Pages CI installs dependencies with Bun using the root `bun.lock`, retains `npm run build`, and uploads only `dist/client`; this matches the project's lockfile and publishes static files without server output.
