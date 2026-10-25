@@ -8,7 +8,7 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 // GitHub Pages serves the site at https://<user>.github.io/portfolio/, so production
 // builds use base "/portfolio/". Dev/preview stays at "/" so the Lovable preview works.
-const isBuild = process.env.NODE_ENV === "production";
+const isBuild = process.env["NODE_ENV"] === "production";
 
 // Every route is prerendered to static HTML at build time: the site needs no server.
 // autoStaticPathsDiscovery is off so this list is the complete set of prerendered pages.

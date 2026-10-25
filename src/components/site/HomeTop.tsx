@@ -98,7 +98,7 @@ function ProjectCard({ slug, big }: { slug: string; big?: boolean }) {
       </div>
       <div className="mt-auto flex items-end justify-between gap-4 pt-6">
         {p.metric ? <p className="font-display text-lg text-signal">{t(p.metric)}</p> : <span />}
-        <Link to="/projects/$slug" params={{ slug: p.slug }} className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium after:absolute after:inset-0">
+        <Link to="/projects/$slug/" params={{ slug: p.slug }} className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium after:absolute after:inset-0">
           {t(ui.caseStudy)} <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </Link>
       </div>
@@ -200,7 +200,7 @@ export function Experience() {
                   <div className="space-y-4">
                     <div className="flex flex-wrap gap-1.5">{e.tech.map((x) => <Chip key={x}>{x}</Chip>)}</div>
                     <p className="text-sm text-muted-foreground">{e.skills.map((s) => t(s)).join(" · ")}</p>
-                    <Link to="/projects/$slug" params={{ slug: e.project }} className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline">
+                    <Link to="/projects/$slug/" params={{ slug: e.project }} className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline">
                       {t(ui.viewProject)} <ArrowUpRight className="size-4" />
                     </Link>
                   </div>
@@ -253,7 +253,7 @@ export function Skills() {
                   const p = getProject(slug)!;
                   return (
                     <li key={slug}>
-                      <Link to="/projects/$slug" params={{ slug }} className="group block rounded-lg border border-border p-3 transition-colors hover:border-primary">
+                      <Link to="/projects/$slug/" params={{ slug }} className="group block rounded-lg border border-border p-3 transition-colors hover:border-primary">
                         <p className="text-sm font-medium">{p.short}</p>
                         <p className="mt-1 text-xs text-muted-foreground">{t(p.title)}</p>
                       </Link>

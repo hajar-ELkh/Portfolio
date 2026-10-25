@@ -135,7 +135,7 @@ function ProjectPage() {
           {p.related.map((r) => {
             const rp = getProject(r)!;
             return (
-              <Link key={r} to="/projects/$slug" params={{ slug: r }} className="panel group p-5 transition-colors hover:border-primary">
+              <Link key={r} to="/projects/$slug/" params={{ slug: r }} className="panel group p-5 transition-colors hover:border-primary">
                 <p className="text-sm text-teal">{rp.short}</p>
                 <p className="mt-1 flex items-start justify-between gap-3 font-display text-lg">
                   {t(rp.title)} <ArrowUpRight className="size-4 shrink-0" />
