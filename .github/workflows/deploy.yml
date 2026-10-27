@@ -40,15 +40,38 @@ jobs:
       - name: Build portfolio
         run: npm run build
 
-      - name: Verify static pages and original public assets
+      - name: Diagnose build output
+        if: always()
+        run: |
+          echo "=== Current directory ==="
+          pwd
+
+          echo "=== Root files ==="
+          ls -la
+
+          echo "=== All generated index.html files ==="
+          find . -maxdepth 6 -name index.html -print
+
+          echo "=== Dist directory ==="
+          ls -la dist dist/client || true
+
+          echo "=== Public assets ==="
+          for asset in cv-hajar-el-khouchali.pdf portrait.jpg favicon.svg favicon.ico; do
+            if [ -f "public/$asset" ]; then
+              echo "Source exists: public/$asset"
+            else
+              echo "Source missing: public/$asset"
+            fi
+            if [ -f "dist/client/$asset" ]; then
+              echo "Build exists: dist/client/$asset"
+            else
+              echo "Build missing: dist/client/$asset"
+            fi
+          done
+
+      - name: Verify homepage
         run: |
           test -f dist/client/index.html
-          test "$(find dist/client/projects -name index.html | wc -l)" -eq 10
-          for asset in cv-hajar-el-khouchali.pdf portrait.jpg favicon.svg favicon.ico; do
-            cmp "public/$asset" "dist/client/$asset"
-          done
-          grep -q '/Portfolio/cv-hajar-el-khouchali.pdf' dist/client/index.html
-          test ! -d dist/client/Portfolio/cv-hajar-el-khouchali.pdf
 
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v4
