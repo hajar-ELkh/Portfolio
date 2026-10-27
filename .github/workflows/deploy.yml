@@ -69,14 +69,19 @@ jobs:
             fi
           done
 
-      - name: Verify homepage
+      - name: Verify generated static site
         run: |
-          test -f dist/client/index.html
+          test -f .output/public/index.html
+          test "$(find .output/public/projects -name index.html | wc -l)" -eq 10
+
+          for asset in cv-hajar-el-khouchali.pdf portrait.jpg favicon.svg favicon.ico; do
+            test -f ".output/public/$asset"
+          done
 
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: dist/client
+          path: .output/public
 
   deploy:
     environment:
